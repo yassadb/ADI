@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -51,16 +52,44 @@ export default function ContactFormSection() {
     },
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    console.log(values)
-    toast({
-      title: "Message Envoyé !",
-      description: "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
-      variant: "default", // Or 'success' if you have such a variant
-    })
-    form.reset()
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Envoyé !",
+          description: "Nous avons bien reçu votre message et vous répondrons dans les plus brefs délais.",
+          variant: "default",
+        });
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        toast({
+          title: "Erreur !",
+          description: errorData.error || "Une erreur s'est produite lors de l'envoi du message.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Erreur !",
+        description: "Une erreur s'est produite lors de l'envoi du message.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -217,9 +246,9 @@ export default function ContactFormSection() {
             type="submit"
             size="lg"
             className="w-full bg-brand-blue hover:bg-brand-blue/90 text-brand-blue-foreground rounded-full py-3.5 text-base font-semibold group transition-all duration-300"
-            disabled={form.formState.isSubmitting}
+            disabled={isSubmitting}
           >
-            {form.formState.isSubmitting ? (
+            {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 Envoi en cours...
