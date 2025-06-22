@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme (Apple-inspired) */
+    --background: 0 0% 100%; /* white */
+    --foreground: 240 10% 3.9%; /* near black */
+    --card: 240 4.8% 95.9%; /* very light gray */
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%; /* dark gray for primary text/elements */
+    --primary-foreground: 0 0% 98%; /* light text on primary elements */
+    --secondary: 240 4.8% 95.9%; /* light gray */
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 92.9%; /* slightly darker light gray */
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 217 91% 60%; /* vibrant blue */
+    --accent-foreground: 0 0% 98%; /* white */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%; /* light border */
+    --input: 240 5.9% 90%;
+    --ring: 217 91% 60%; /* blue for focus rings */
+    --radius: 0.75rem; /* Slightly larger radius for modern feel */
+
+    --brand-blue: 217 91% 60%;
+    --brand-blue-foreground: 0 0% 98%;
+
+    --background-glow-start: 220 50% 95%; /* Light blueish glow for light theme */
+    --background-glow-end: 0 0% 100%;
+  }
+
+  .dark {
+    /* Dark Theme (Apple-inspired) */
+    --background: 240 10% 3.9%; /* near black */
+    --foreground: 0 0% 98%; /* white */
+    --card: 240 5% 8%; /* very dark gray, slightly lighter than bg */
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* light gray for primary text/elements */
+    --primary-foreground: 240 5.9% 10%; /* dark text on primary elements */
+    --secondary: 240 3.7% 15.9%; /* dark gray */
+    --secondary-foreground: 240 5% 64.9%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 217 91% 60%; /* vibrant blue */
+    --accent-foreground: 0 0% 98%; /* white */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%; /* subtle dark border */
+    --input: 240 3.7% 15.9%;
+    --ring: 217 91% 60%; /* blue for focus rings */
+
+    --brand-blue: 217 91% 60%;
+    --brand-blue-foreground: 0 0% 98%;
+
+    --background-glow-start: 220 50% 10%; /* Dark blueish glow for dark theme */
+    --background-glow-end: 240 10% 3.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Enable common ligatures */
+  }
+  ::selection {
+    @apply bg-accent/30 text-accent-foreground;
+  }
+}
+
+/* Utility classes for staggered animations */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Smooth scroll for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (optional, for a more polished look) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-muted/50;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/70 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent;
+}
