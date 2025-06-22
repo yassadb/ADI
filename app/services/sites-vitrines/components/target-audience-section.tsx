@@ -1,5 +1,5 @@
 import type React from "react"
-import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface TargetAudienceSectionProps {
   title: string
@@ -8,9 +8,8 @@ interface TargetAudienceSectionProps {
 }
 
 const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ title, description, targetAudiences }) => {
-  const { ref: titleRef, animation: titleAnimation } = useScrollAnimation()
-  const { ref: descriptionRef, animation: descriptionAnimation } = useScrollAnimation()
-  const audienceRefs = targetAudiences.map(() => useScrollAnimation())
+  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation<HTMLHeadingElement>()
+  const { ref: descriptionRef, animationClassName: descriptionAnimation } = useScrollAnimation<HTMLParagraphElement>({ delay: 150 })
 
   return (
     <section className="py-12 bg-gray-50">
@@ -22,15 +21,18 @@ const TargetAudienceSection: React.FC<TargetAudienceSectionProps> = ({ title, de
           {description}
         </p>
         <ul className="list-disc pl-6">
-          {targetAudiences.map((audience, index) => (
-            <li
-              key={index}
-              ref={audienceRefs[index].ref}
-              className={`text-gray-700 mb-2 ${audienceRefs[index].animation}`}
-            >
-              {audience}
-            </li>
-          ))}
+          {targetAudiences.map((audience, index) => {
+            const { ref, animationClassName } = useScrollAnimation<HTMLLIElement>({ delay: index * 150 })
+            return (
+              <li
+                key={index}
+                ref={ref}
+                className={`text-gray-700 mb-2 ${animationClassName}`}
+              >
+                {audience}
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

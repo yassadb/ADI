@@ -1,5 +1,5 @@
 import type React from "react"
-import { useScrollAnimation } from "@/hooks/useScrollAnimation"
+import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 interface ShowcaseSectionProps {
   title: string
@@ -8,9 +8,9 @@ interface ShowcaseSectionProps {
 }
 
 const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({ title, description, images }) => {
-  const { ref: titleRef, animation: titleAnimation } = useScrollAnimation()
-  const { ref: descriptionRef, animation: descriptionAnimation } = useScrollAnimation()
-  const { ref: imagesRef, animation: imagesAnimation } = useScrollAnimation()
+  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation<HTMLHeadingElement>()
+  const { ref: descriptionRef, animationClassName: descriptionAnimation } = useScrollAnimation<HTMLParagraphElement>({ delay: 150 })
+  const { ref: imagesRef, animationClassName: imagesAnimation } = useScrollAnimation<HTMLDivElement>({ delay: 300 })
 
   return (
     <section className="py-16">
