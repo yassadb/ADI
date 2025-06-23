@@ -8,14 +8,14 @@ const submissionsFilePath = 'contact-form-submissions.json';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { firstName, lastName, email, message } = body;
+    const { fullName, email, message } = body;
 
     // Send email using Resend
     const data = await resend.emails.send({
       from: 'Atlas Digital Impact <onboarding@resend.dev>',
       to: ['contact@atlas-digital-impact.com'],
       subject: 'New Contact Form Submission',
-      html: `<p><strong>Name:</strong> ${firstName} ${lastName}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
+      html: `<p><strong>Name:</strong> ${fullName}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
     });
 
     // Save submission to file
@@ -28,8 +28,7 @@ export async function POST(req: NextRequest) {
     }
 
     submissions.push({
-      firstName,
-      lastName,
+      fullName,
       email,
       message,
       timestamp: new Date().toISOString(),
