@@ -1,61 +1,44 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, MessageCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { GeoPatternBackground } from "@/components/ui/geo-pattern"
+import { ScrollSection } from "@/components/ui/scroll-section"
 
 export default function CtaBannerSection() {
-  // Define the more matte, sober green button style
-  const greenButtonStyle = {
-    background: "linear-gradient(to right, #065f46, #064e3b)", // More matte, sober forest green
-    color: "white",
-    borderRadius: "9999px",
-    fontWeight: "600",
-    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-    border: "none",
-  }
-
   return (
-    <section className="bg-gradient-to-r from-brand-blue via-sky-500 to-blue-600 text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        {/* Subtle pattern or abstract shapes */}
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="ctaPattern"
-              patternUnits="userSpaceOnUse"
-              width="60"
-              height="60"
-              patternTransform="scale(1) rotate(45)"
-            >
-              <circle cx="10" cy="10" r="1.5" fill="currentColor" />
-              <circle cx="40" cy="40" r="1" fill="currentColor" opacity="0.5" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#ctaPattern)" />
-        </svg>
-      </div>
+    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-deep via-indigo to-indigo-deep text-white">
+      {/* Geometric pattern overlay */}
+      <GeoPatternBackground variant="rosette" opacity={0.06} />
 
       <div className="relative container mx-auto max-w-4xl py-20 px-4 sm:px-6 lg:py-28 lg:px-8">
-        <div className="text-center animate-fade-in-up">
-          <MessageCircle className="h-12 w-12 text-white/80 mx-auto mb-6" />
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">Prêt pour le digital ?</h2>
-          <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Discutons de vos ambitions. Ensemble, transformons vos idées en réalité numérique percutante et durable pour
-            le marché marocain.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-10 py-4 text-sm transition-all duration-300 transform hover:scale-105 group"
-            style={greenButtonStyle}
-          >
-            Parlons de Votre Projet
-            
-          </Link>
-        </div>
+        <ScrollSection animation="scale">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl mb-6">
+              <span className="text-amber-light">Construisons</span> Ensemble
+            </h2>
+            <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Expertise digitale locale en Belgique, impact au Maroc. Discutons de vos ambitions et
+              transformons vos idées en réalité numérique percutante.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-10 py-4 text-sm font-semibold rounded-full bg-amber hover:bg-amber-deep text-white shadow-lg shadow-amber/30 transition-all duration-300 hover:scale-105"
+              >
+                Démarrer une Consultation
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center px-10 py-4 text-sm font-semibold rounded-full border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              >
+                Voir nos services
+              </Link>
+            </div>
+          </div>
+        </ScrollSection>
       </div>
     </section>
   )
 }
-// This section already has `animate-fade-in-up` on the main content block.
-// Review if individual elements within it (icon, title, paragraph, button) could benefit from slight staggers if not already subtle enough.
-// For now, the existing animation might be sufficient.
