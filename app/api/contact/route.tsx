@@ -3,7 +3,7 @@ import { Resend } from 'resend';
 import { NotificationEmailTemplate } from '@/components/notification-email-template';
 import { ConfirmationEmailTemplate } from '@/components/confirmation-email-template';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "re_placeholder");
 
 export async function POST(req: NextRequest) {
   try {

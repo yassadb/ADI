@@ -1,18 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-import ScrollToTop from "@/components/utils/scroll-to-top" // Import the new component
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+import ScrollToTop from "@/components/utils/scroll-to-top"
+import { LenisProvider } from "@/components/ui/lenis-provider"
+import { ChatWidgetLoader } from "@/components/ai/chat-widget-loader"
 
 export const metadata: Metadata = {
-  title: "Atlas Digital Impact - Modern Digital Solutions",
+  title: "Atlas Digital Impact — Digital Craftsmanship",
   description:
-    "Elevating Moroccan businesses with cutting-edge digital experiences. Inspired by modern design principles.",
-  generator: "v0.dev",
+    "Expertise digitale locale en Belgique, impact au Maroc. Sites web, e-commerce, applications et branding avec la précision d'un artisan.",
 }
 
 export default function RootLayout({
@@ -22,16 +20,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark" // Setting dark theme as default
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <ScrollToTop /> {/* Add the ScrollToTop component here */}
-          {children}
-          <Toaster richColors position="top-right" />
+          <LenisProvider>
+            <ScrollToTop />
+            {children}
+            <Toaster richColors position="top-right" />
+            <ChatWidgetLoader />
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

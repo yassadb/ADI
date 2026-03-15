@@ -4,62 +4,70 @@
 
 @layer base {
   :root {
-    /* Light Theme (Apple-inspired) */
-    --background: 0 0% 100%; /* white */
-    --foreground: 240 10% 3.9%; /* near black */
-    --card: 240 4.8% 95.9%; /* very light gray */
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%; /* dark gray for primary text/elements */
-    --primary-foreground: 0 0% 98%; /* light text on primary elements */
-    --secondary: 240 4.8% 95.9%; /* light gray */
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 92.9%; /* slightly darker light gray */
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 217 91% 60%; /* vibrant blue */
-    --accent-foreground: 0 0% 98%; /* white */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%; /* light border */
-    --input: 240 5.9% 90%;
-    --ring: 217 91% 60%; /* blue for focus rings */
-    --radius: 0.75rem; /* Slightly larger radius for modern feel */
+    /* Light Theme — "Digital Craftsmanship" warm palette */
+    --background: 50 33% 97%; /* cream #FAFAF5 */
+    --foreground: 240 5% 12%; /* charcoal #1C1C1E */
+    --card: 37 24% 92%; /* sand #F0EDE6 */
+    --card-foreground: 240 5% 12%;
+    --popover: 50 33% 97%;
+    --popover-foreground: 240 5% 12%;
+    --primary: 240 5% 12%; /* charcoal */
+    --primary-foreground: 50 33% 97%;
+    --secondary: 37 24% 92%; /* sand */
+    --secondary-foreground: 240 5% 12%;
+    --muted: 37 18% 88%;
+    --muted-foreground: 240 3% 46%;
+    --accent: 30 62% 53%; /* amber #D4873B */
+    --accent-foreground: 50 33% 97%;
+    --destructive: 350 55% 55%; /* rose #D4687A */
+    --destructive-foreground: 50 33% 97%;
+    --border: 37 18% 85%;
+    --input: 37 18% 85%;
+    --ring: 30 62% 53%; /* amber for focus rings */
+    --radius: 0.75rem;
 
-    --brand-blue: 217 91% 60%;
-    --brand-blue-foreground: 0 0% 98%;
-
-    --background-glow-start: 220 50% 95%; /* Light blueish glow for light theme */
-    --background-glow-end: 0 0% 100%;
+    /* Brand colors */
+    --amber: 30 62% 53%;
+    --amber-light: 39 78% 74%;
+    --amber-deep: 27 75% 41%;
+    --indigo: 211 36% 37%;
+    --indigo-deep: 210 52% 22%;
+    --indigo-light: 213 30% 56%;
+    --emerald: 155 44% 30%;
+    --terracotta: 19 51% 53%;
   }
 
   .dark {
-    /* Dark Theme (Apple-inspired) */
-    --background: 240 10% 3.9%; /* near black */
-    --foreground: 0 0% 98%; /* white */
-    --card: 240 5% 8%; /* very dark gray, slightly lighter than bg */
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%; /* light gray for primary text/elements */
-    --primary-foreground: 240 5.9% 10%; /* dark text on primary elements */
-    --secondary: 240 3.7% 15.9%; /* dark gray */
-    --secondary-foreground: 240 5% 64.9%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 217 91% 60%; /* vibrant blue */
-    --accent-foreground: 0 0% 98%; /* white */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%; /* subtle dark border */
-    --input: 240 3.7% 15.9%;
-    --ring: 217 91% 60%; /* blue for focus rings */
+    /* Dark Theme — "Digital Craftsmanship" night palette */
+    --background: 216 18% 7%; /* night #0D1117 */
+    --foreground: 50 33% 97%; /* cream */
+    --card: 215 16% 11%; /* night-soft #161B22 */
+    --card-foreground: 50 33% 97%;
+    --popover: 216 18% 7%;
+    --popover-foreground: 50 33% 97%;
+    --primary: 50 33% 97%;
+    --primary-foreground: 216 18% 7%;
+    --secondary: 215 14% 15%;
+    --secondary-foreground: 37 18% 75%;
+    --muted: 215 14% 15%;
+    --muted-foreground: 37 18% 60%;
+    --accent: 30 62% 53%; /* amber */
+    --accent-foreground: 50 33% 97%;
+    --destructive: 350 55% 40%;
+    --destructive-foreground: 50 33% 97%;
+    --border: 215 14% 18%;
+    --input: 215 14% 18%;
+    --ring: 30 62% 53%; /* amber for focus rings */
 
-    --brand-blue: 217 91% 60%;
-    --brand-blue-foreground: 0 0% 98%;
-
-    --background-glow-start: 220 50% 10%; /* Dark blueish glow for dark theme */
-    --background-glow-end: 240 10% 3.9%;
+    /* Brand colors (same in dark) */
+    --amber: 30 62% 53%;
+    --amber-light: 39 78% 74%;
+    --amber-deep: 27 75% 41%;
+    --indigo: 211 36% 37%;
+    --indigo-deep: 210 52% 22%;
+    --indigo-light: 213 30% 56%;
+    --emerald: 155 44% 30%;
+    --terracotta: 19 51% 53%;
   }
 }
 
@@ -90,9 +98,9 @@
   animation-delay: 500ms;
 }
 
-/* Smooth scroll for the entire page */
+/* Smooth scroll disabled — Lenis handles this */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 /* Custom scrollbar (optional, for a more polished look) */

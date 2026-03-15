@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Linkedin, Mail, Phone, MapPin, Sparkles } from "lucide-react"
+import { Linkedin, Mail } from "lucide-react"
+import { GeoPattern } from "@/components/ui/geo-pattern"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -28,29 +29,24 @@ export default function Footer() {
 
   return (
     <footer className="bg-background border-t border-border/50 relative overflow-hidden">
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-footer-gradient pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-amber/3 to-transparent pointer-events-none" />
       <div className="container mx-auto py-16 sm:py-24 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Information */}
           <div className="md:col-span-2 lg:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-6 group">
-              <Sparkles className="h-8 w-8 text-brand-blue transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
+            <Link href="/" className="flex items-center space-x-3 mb-6 group">
+              <GeoPattern variant="star-8" size={32} color="hsl(var(--amber))" opacity={0.7} animate={false} />
               <span className="text-2xl font-bold text-foreground">Atlas Digital Impact</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-md">
-              Atlas Digital Impact : Votre partenaire digital pour une croissance ambitieuse au Maroc. Nous façonnons
-              l'avenir numérique.
+              Expertise digitale locale en Belgique, impact au Maroc. Nous façonnons le digital
+              avec la précision d'un artisan.
             </p>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <div className="flex items-start">
-                
-                
-              </div>
-              
               <div className="flex items-center">
-                <Mail className="h-5 w-5 text-brand-blue mr-3 flex-shrink-0" />
-                <a href="mailto:contact@ouladib.com" className="hover:text-brand-blue transition-colors">
-                  {"contact@atlas-digital-impact.com"}
+                <Mail className="h-5 w-5 text-amber mr-3 flex-shrink-0" />
+                <a href="mailto:contact@atlas-digital-impact.com" className="hover:text-amber transition-colors">
+                  contact@atlas-digital-impact.com
                 </a>
               </div>
             </div>
@@ -65,7 +61,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-brand-blue transition-colors"
+                      className="text-sm text-muted-foreground hover:text-amber transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -85,11 +81,10 @@ export default function Footer() {
             <Link
               href="#"
               aria-label="LinkedIn"
-              className="text-muted-foreground hover:text-brand-blue transition-colors"
+              className="text-muted-foreground hover:text-amber transition-colors"
             >
               <Linkedin className="h-5 w-5" />
             </Link>
-            {/* Add other social media icons here */}
           </div>
         </div>
       </div>
