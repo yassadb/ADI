@@ -7,11 +7,6 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "./*.{ts,tsx}", // Ensure this line or similar covers root components
   ],
   theme: {
     extend: {
@@ -73,43 +68,22 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        // Brand palette — "Digital Craftsmanship"
+        amber: {
+          DEFAULT: "hsl(var(--amber))",
+          light: "hsl(var(--amber-light))",
+          deep: "hsl(var(--amber-deep))",
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        indigo: {
+          DEFAULT: "hsl(var(--indigo))",
+          deep: "hsl(var(--indigo-deep))",
+          light: "hsl(var(--indigo-light))",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        emerald: {
+          DEFAULT: "hsl(var(--emerald))",
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        "brand-blue": {
-          DEFAULT: "hsl(var(--brand-blue))",
-          foreground: "hsl(var(--brand-blue-foreground))",
-          dark: "hsl(var(--brand-blue-dark))",
+        terracotta: {
+          DEFAULT: "hsl(var(--terracotta))",
         },
       },
       borderRadius: {
@@ -119,20 +93,12 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "fade-in": {
           from: { opacity: "0" },
@@ -154,6 +120,18 @@ const config: Config = {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
+        "geo-spin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        "geo-pulse": {
+          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+        },
+        "draw-line": {
+          from: { strokeDashoffset: "100%" },
+          to: { strokeDashoffset: "0%" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -163,6 +141,9 @@ const config: Config = {
         "fade-in-left": "fade-in-left var(--animation-duration, 0.5s) ease-out forwards",
         "fade-in-right": "fade-in-right var(--animation-duration, 0.5s) ease-out forwards",
         "scale-up": "scale-up var(--animation-duration, 0.5s) ease-out forwards",
+        "geo-spin": "geo-spin 20s linear infinite",
+        "geo-pulse": "geo-pulse 3s ease-in-out infinite",
+        "draw-line": "draw-line 1.5s ease-out forwards",
       },
     },
   },
