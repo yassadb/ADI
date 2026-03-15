@@ -109,7 +109,7 @@ export default function ContactFormSection() {
                     <Input
                       placeholder="Ex: Jean Dupont"
                       {...field}
-                      className="bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue"
+                      className="bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30"
                     />
                   </FormControl>
                   <FormMessage />
@@ -126,7 +126,7 @@ export default function ContactFormSection() {
                     <Input
                       placeholder="Nom de votre entreprise"
                       {...field}
-                      className="bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue"
+                      className="bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30"
                     />
                   </FormControl>
                   <FormMessage />
@@ -145,7 +145,7 @@ export default function ContactFormSection() {
                     type="email"
                     placeholder="Ex: jean.dupont@example.com"
                     {...field}
-                    className="bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue"
+                    className="bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30"
                   />
                 </FormControl>
                 <FormMessage />
@@ -163,7 +163,7 @@ export default function ContactFormSection() {
                     type="tel"
                     placeholder="Ex: +33 6 12 34 56 78"
                     {...field}
-                    className="bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue"
+                    className="bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30"
                   />
                 </FormControl>
                 <FormMessage />
@@ -178,7 +178,7 @@ export default function ContactFormSection() {
                 <FormLabel className="text-sm font-medium text-foreground">Sujet de votre demande *</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger className="bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue">
+                    <SelectTrigger className="bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30">
                       <SelectValue placeholder="Sélectionnez un sujet" />
                     </SelectTrigger>
                   </FormControl>
@@ -203,7 +203,7 @@ export default function ContactFormSection() {
                 <FormControl>
                   <Textarea
                     placeholder="Décrivez votre projet, vos questions ou vos besoins..."
-                    className="min-h-[140px] bg-background border-border/70 focus:border-brand-blue focus:ring-brand-blue"
+                    className="min-h-[140px] bg-background border-border/70 focus:border-amber/40 focus:ring-amber/30"
                     {...field}
                   />
                 </FormControl>
@@ -221,7 +221,7 @@ export default function ContactFormSection() {
                     checked={field.value}
                     onCheckedChange={field.onChange}
                     id="privacyPolicy"
-                    className="border-muted-foreground data-[state=checked]:bg-brand-blue data-[state=checked]:border-brand-blue"
+                    className="border-muted-foreground data-[state=checked]:bg-amber data-[state=checked]:border-amber"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
@@ -231,7 +231,7 @@ export default function ContactFormSection() {
                       href="/politique-de-confidentialite"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline text-brand-blue hover:text-brand-blue/80"
+                      className="underline text-amber hover:text-amber-deep"
                     >
                       politique de confidentialité
                     </Link>
@@ -245,7 +245,7 @@ export default function ContactFormSection() {
           <Button
             type="submit"
             size="lg"
-            className="w-full bg-brand-blue hover:bg-brand-blue/90 text-brand-blue-foreground rounded-full py-3.5 text-base font-semibold group transition-all duration-300"
+            className="w-full bg-amber hover:bg-amber-deep text-white rounded-full py-3.5 text-base font-semibold group transition-all duration-300"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

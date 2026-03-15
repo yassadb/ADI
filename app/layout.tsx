@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import ScrollToTop from "@/components/utils/scroll-to-top"
 import { LenisProvider } from "@/components/ui/lenis-provider"
+import { ChatWidgetLoader } from "@/components/ai/chat-widget-loader"
 
 export const metadata: Metadata = {
   title: "Atlas Digital Impact — Digital Craftsmanship",
@@ -30,6 +31,7 @@ export default function RootLayout({
             <ScrollToTop />
             {children}
             <Toaster richColors position="top-right" />
+            <ChatWidgetLoader />
           </LenisProvider>
         </ThemeProvider>
       </body>
