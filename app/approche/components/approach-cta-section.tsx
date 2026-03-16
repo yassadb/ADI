@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export default function ApproachCtaSection() {
-  const sectionContentAnim = useScrollAnimation<HTMLDivElement>() // Default animationName is fade-in-up
+  const sectionContentAnim = useScrollAnimation() // Default animationName is fade-in-up
 
   return (
-    <section className="bg-gradient-to-r from-brand-blue via-sky-500 to-blue-600 text-white relative overflow-hidden">
+    <section className="bg-gradient-to-r from-amber via-amber-light to-indigo text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>

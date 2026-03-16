@@ -5,23 +5,23 @@ import { cn } from "@/lib/utils"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export default function ClientExpectationsSection() {
-  const iconAnim = useScrollAnimation<HTMLDivElement>({ animationName: "fade-in" }) // Explicitly using fade-in
-  const titleAnim = useScrollAnimation<HTMLHeadingElement>({ delay: 100 })
-  const paragraphAnim = useScrollAnimation<HTMLParagraphElement>({ delay: 200 })
+  const iconAnim = useScrollAnimation({ animationName: "fade-in" }) // Explicitly using fade-in
+  const titleAnim = useScrollAnimation({ delay: 100 })
+  const paragraphAnim = useScrollAnimation({ delay: 200 })
 
   return (
-    <section className="bg-brand-blue/5 py-20 sm:py-28">
+    <section className="bg-amber/5 py-20 sm:py-28">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           <div
             ref={iconAnim.ref}
             className={cn(
-              "mb-6 inline-flex items-center justify-center p-3 bg-brand-blue/10 rounded-full opacity-0",
+              "mb-6 inline-flex items-center justify-center p-3 bg-amber/10 rounded-full opacity-0",
               iconAnim.animationClassName,
             )}
             style={iconAnim.style}
           >
-            <Handshake className="h-10 w-10 text-brand-blue" />
+            <Handshake className="h-10 w-10 text-amber" />
           </div>
           <h2
             ref={titleAnim.ref}
@@ -31,7 +31,7 @@ export default function ClientExpectationsSection() {
             )}
             style={titleAnim.style}
           >
-            Pour une Collaboration <span className="text-brand-blue">Fructueuse</span>.
+            Pour une Collaboration <span className="text-amber">Fructueuse</span>.
           </h2>
           <p
             ref={paragraphAnim.ref}

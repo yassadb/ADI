@@ -5,9 +5,9 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { cn } from "@/lib/utils"
 
 export default function AgencyHeroSection() {
-  const badgeAnim = useScrollAnimation<HTMLDivElement>({ delay: 100 })
-  const titleAnim = useScrollAnimation<HTMLHeadingElement>({ delay: 200 })
-  const paragraphAnim = useScrollAnimation<HTMLParagraphElement>({ delay: 300 })
+  const badgeAnim = useScrollAnimation({ delay: 100 })
+  const titleAnim = useScrollAnimation({ delay: 200 })
+  const paragraphAnim = useScrollAnimation({ delay: 300 })
 
   return (
     <section className="relative bg-background text-foreground py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -46,7 +46,7 @@ export default function AgencyHeroSection() {
             )}
             style={titleAnim.style}
           >
-            L'Alliance de l'Expertise et de la <span className="text-brand-blue">Passion Digitale</span>.
+            L'Alliance de l'Expertise et de la <span className="text-amber">Passion Digitale</span>.
           </h1>
           <p
             ref={paragraphAnim.ref}

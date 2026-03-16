@@ -9,7 +9,7 @@ export default function ContactInfoSection() {
       <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-8">Nos Coordonnées.</h3>
       <div className="space-y-6 text-muted-foreground flex-grow">
         <div className="flex items-start">
-          <MapPin className="h-6 w-6 text-brand-blue mr-4 mt-1 flex-shrink-0" />
+          <MapPin className="h-6 w-6 text-amber mr-4 mt-1 flex-shrink-0" />
           <div>
             <p className="font-semibold text-foreground">Atlas Digital Impact</p>
             <p>Boulevard du Jubilé</p>
@@ -17,22 +17,22 @@ export default function ContactInfoSection() {
           </div>
         </div>
         <div className="flex items-center">
-          <Mail className="h-5 w-5 text-brand-blue mr-4 flex-shrink-0" />
-          <a href="mailto:contact@atlas-digital-impact.com" className="hover:text-brand-blue transition-colors">
+          <Mail className="h-5 w-5 text-amber mr-4 flex-shrink-0" />
+          <a href="mailto:contact@atlas-digital-impact.com" className="hover:text-amber transition-colors">
             contact@atlas-digital-impact.com
           </a>
         </div>
         <div className="flex items-center">
-          <Phone className="h-5 w-5 text-brand-blue mr-4 flex-shrink-0" />
+          <Phone className="h-5 w-5 text-amber mr-4 flex-shrink-0" />
           <span>+32 2 XXX XX XX (BE)</span> {/* Placeholder */}
         </div>
         <div className="flex items-center">
-          <Info className="h-5 w-5 text-brand-blue mr-4 flex-shrink-0" />
+          <Info className="h-5 w-5 text-amber mr-4 flex-shrink-0" />
           <span>OULADIB SRL : BE0768.657.593</span>
         </div>
         <div className="flex items-center">
-          <Linkedin className="h-5 w-5 text-brand-blue mr-4 flex-shrink-0" />
-          <Link href="#" className="hover:text-brand-blue transition-colors">
+          <Linkedin className="h-5 w-5 text-amber mr-4 flex-shrink-0" />
+          <Link href="#" className="hover:text-amber transition-colors">
             Suivez-nous sur LinkedIn
           </Link>
         </div>

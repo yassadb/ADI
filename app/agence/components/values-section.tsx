@@ -51,8 +51,8 @@ const ValueCard = ({ value, delay }: { value: (typeof values)[0]; delay: number 
       style={anim.style}
     >
       <CardHeader className="items-center pt-8 pb-4">
-        <div className="p-4 bg-brand-blue/10 rounded-full mb-4">
-          <value.icon className="h-8 w-8 text-brand-blue" />
+        <div className="p-4 bg-amber/10 rounded-full mb-4">
+          <value.icon className="h-8 w-8 text-amber" />
         </div>
         <CardTitle className="text-xl font-semibold text-foreground">{value.name}</CardTitle>
       </CardHeader>

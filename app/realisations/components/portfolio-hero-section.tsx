@@ -5,9 +5,9 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { cn } from "@/lib/utils"
 
 export default function PortfolioHeroSection() {
-  const animBadge = useScrollAnimation<HTMLDivElement>({ delay: 100, animationName: "fade-in" })
-  const animTitle = useScrollAnimation<HTMLHeadingElement>({ delay: 200, animationName: "fade-in-up" })
-  const animText = useScrollAnimation<HTMLParagraphElement>({ delay: 300, animationName: "fade-in-up" })
+  const animBadge = useScrollAnimation({ delay: 100, animationName: "fade-in" })
+  const animTitle = useScrollAnimation({ delay: 200, animationName: "fade-in-up" })
+  const animText = useScrollAnimation({ delay: 300, animationName: "fade-in-up" })
 
   return (
     <section id="gallery" className="relative bg-background text-foreground py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -47,7 +47,7 @@ export default function PortfolioHeroSection() {
             )}
             style={animTitle.style}
           >
-            Découvrez la Qualité Atlas Digital Impact <span className="text-brand-blue">en Action</span>.
+            Découvrez la Qualité Atlas Digital Impact <span className="text-amber">en Action</span>.
           </h1>
           <p
             ref={animText.ref}

@@ -33,8 +33,8 @@ const commitments = [
 ]
 
 export default function QualityCommitmentsSection() {
-  const sectionTitleAnim = useScrollAnimation<HTMLHeadingElement>()
-  const sectionSubtitleAnim = useScrollAnimation<HTMLParagraphElement>({ delay: 100 })
+  const sectionTitleAnim = useScrollAnimation()
+  const sectionSubtitleAnim = useScrollAnimation({ delay: 100 })
 
   return (
     <section className="bg-background py-20 sm:py-28">
@@ -48,7 +48,7 @@ export default function QualityCommitmentsSection() {
             )}
             style={sectionTitleAnim.style}
           >
-            Nos Engagements pour une Collaboration <span className="text-brand-blue">Réussie</span>.
+            Nos Engagements pour une Collaboration <span className="text-amber">Réussie</span>.
           </h2>
           <p
             ref={sectionSubtitleAnim.ref}
@@ -74,7 +74,7 @@ interface CommitmentCardProps {
 }
 
 function CommitmentCard({ commitment, index }: CommitmentCardProps) {
-  const cardAnim = useScrollAnimation<HTMLDivElement>({ delay: (index + 1) * 100 }) // Default animationName is fade-in-up
+  const cardAnim = useScrollAnimation({ delay: (index + 1) * 100 }) // Default animationName is fade-in-up
   return (
     <Card
       ref={cardAnim.ref}
@@ -85,8 +85,8 @@ function CommitmentCard({ commitment, index }: CommitmentCardProps) {
       style={cardAnim.style}
     >
       <CardHeader className="p-0 mb-4 sm:mb-0 sm:mr-6 flex-shrink-0">
-        <div className="p-3 bg-brand-blue/10 rounded-full">
-          <commitment.icon className="h-8 w-8 text-brand-blue" />
+        <div className="p-3 bg-amber/10 rounded-full">
+          <commitment.icon className="h-8 w-8 text-amber" />
         </div>
       </CardHeader>
       <div>

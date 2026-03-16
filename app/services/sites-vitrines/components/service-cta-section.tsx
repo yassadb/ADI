@@ -18,9 +18,9 @@ const ServiceCTASection: React.FC<ServiceCTASectionProps> = ({
   backgroundColor = "bg-primary",
   textColor = "text-white",
 }) => {
-  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation<HTMLHeadingElement>()
-  const { ref: paragraphRef, animationClassName: paragraphAnimation } = useScrollAnimation<HTMLParagraphElement>({ delay: 150 })
-  const { ref: buttonRef, animationClassName: buttonAnimation } = useScrollAnimation<HTMLAnchorElement>({ delay: 300 })
+  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation()
+  const { ref: paragraphRef, animationClassName: paragraphAnimation } = useScrollAnimation({ delay: 150 })
+  const { ref: buttonRef, animationClassName: buttonAnimation } = useScrollAnimation({ delay: 300 })
 
   return (
     <section className={`${backgroundColor} ${textColor} py-16`}>

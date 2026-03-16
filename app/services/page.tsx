@@ -65,7 +65,7 @@ export default function ServicesPage() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <CardHeader className="items-start p-6">
-                    <div className="p-3 rounded-lg bg-brand-blue/10 text-brand-blue mb-4">
+                    <div className="p-3 rounded-lg bg-amber/10 text-amber mb-4">
                       <service.icon className="h-8 w-8" />
                     </div>
                     <CardTitle className="text-xl font-semibold text-foreground">{service.title}</CardTitle>
@@ -75,7 +75,7 @@ export default function ServicesPage() {
                     <Button
                       asChild
                       variant="ghost"
-                      className="text-brand-blue hover:text-brand-blue/80 p-0 h-auto self-start group"
+                      className="text-amber hover:text-amber/80 p-0 h-auto self-start group"
                     >
                       <Link href={service.href}>{service.ctaText}</Link>
                     </Button>

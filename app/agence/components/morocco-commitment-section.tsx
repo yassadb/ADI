@@ -16,12 +16,12 @@ export default function MoroccoCommitmentSection() {
           <div
             ref={iconAnim.ref}
             className={cn(
-              "mb-6 inline-flex items-center justify-center p-3 bg-brand-blue/10 rounded-full opacity-0",
+              "mb-6 inline-flex items-center justify-center p-3 bg-amber/10 rounded-full opacity-0",
               iconAnim.animationClassName,
             )}
             style={iconAnim.style}
           >
-            <HeartHandshake className="h-10 w-10 text-brand-blue" />
+            <HeartHandshake className="h-10 w-10 text-amber" />
           </div>
           <h2
             ref={titleAnim.ref}
@@ -31,7 +31,7 @@ export default function MoroccoCommitmentSection() {
             )}
             style={titleAnim.style}
           >
-            Notre Engagement Spécifique pour le <span className="text-brand-blue">Maroc</span>.
+            Notre Engagement Spécifique pour le <span className="text-amber">Maroc</span>.
           </h2>
           <p
             ref={paragraphAnim.ref}

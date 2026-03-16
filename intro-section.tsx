@@ -6,17 +6,17 @@ import Image from "next/image" // Import Next.js Image component
 import { useRef } from "react"
 
 export default function IntroSection() {
-  const titleAnim = useScrollAnimation<HTMLHeadingElement>({ animationName: "fade-in-up", duration: 700 })
-  const paragraphAnim = useScrollAnimation<HTMLParagraphElement>({
+  const titleAnim = useScrollAnimation({ animationName: "fade-in-up", duration: 700 })
+  const paragraphAnim = useScrollAnimation({
     animationName: "fade-in-up",
     delay: 150,
     duration: 700,
   })
-  const imageAnim = useScrollAnimation<HTMLDivElement>({ animationName: "fade-in-up", delay: 300, duration: 700 }) // Changed to HTMLDivElement for the image wrapper
+  const imageAnim = useScrollAnimation({ animationName: "fade-in-up", delay: 300, duration: 700 }) // Changed to HTMLDivElement for the image wrapper
 
-  const listItemAnims = useRef<(ScrollAnimationResult<HTMLDivElement> | null)[]>([null, null, null])
+  const listItemAnims = useRef<(ScrollAnimationResult | null)[]>([null, null, null])
   listItemAnims.current = listItemAnims.current.map((_, index) => {
-    return useScrollAnimation<HTMLDivElement>({ animationName: "fade-in-up", delay: 300 + index * 100, duration: 500 })
+    return useScrollAnimation({ animationName: "fade-in-up", delay: 300 + index * 100, duration: 500 })
   })
 
   return (
@@ -36,7 +36,7 @@ export default function IntroSection() {
             >
               L'Art de l'Impact Digital,
               <br />
-              <span className="text-brand-blue">Réinventé pour le Maroc.</span>
+              <span className="text-amber">Réinventé pour le Maroc.</span>
             </h2>
             <p
               ref={paragraphAnim.ref}
@@ -70,7 +70,7 @@ export default function IntroSection() {
                     className={cn("flex items-start opacity-0", itemAnim.animationClassName)}
                     style={itemAnim.style}
                   >
-                    {/* <IconComponent className="h-6 w-6 text-brand-blue mr-3 mt-1 flex-shrink-0" /> */}
+                    {/* <IconComponent className="h-6 w-6 text-amber mr-3 mt-1 flex-shrink-0" /> */}
                     <span className="text-muted-foreground">{item.text}</span>
                   </div>
                 )
@@ -78,7 +78,7 @@ export default function IntroSection() {
             </div>
             {/* Button animation */}
             {(() => {
-              const btnAnim = useScrollAnimation<HTMLDivElement>({
+              const btnAnim = useScrollAnimation({
                 animationName: "fade-in-up",
                 delay: 600,
                 duration: 500,
@@ -105,8 +105,8 @@ export default function IntroSection() {
                 className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-brand-blue/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-36 h-36 bg-sky-500/5 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-amber/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute -top-6 -left-6 w-36 h-36 bg-amber/5 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
       </div>

@@ -6,14 +6,14 @@ import { cn } from "@/lib/utils"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export default function PortfolioCtaSection() {
-  const sectionAnim = useScrollAnimation<HTMLElement>({ animationName: "animate-fade-in", duration: 700 })
-  const contentAnim = useScrollAnimation<HTMLDivElement>({
-    animationName: "animate-fade-in-up",
+  const sectionAnim = useScrollAnimation({ animationName: "fade-in", duration: 700 })
+  const contentAnim = useScrollAnimation({
+    animationName: "fade-in-up",
     delay: 200,
     duration: 500,
   })
-  const buttonAnim = useScrollAnimation<HTMLAnchorElement>({
-    animationName: "animate-fade-in-up",
+  const buttonAnim = useScrollAnimation({
+    animationName: "fade-in-up",
     delay: 400,
     duration: 500,
   })
@@ -32,7 +32,7 @@ export default function PortfolioCtaSection() {
     <section
       ref={sectionAnim.ref}
       className={cn(
-        "bg-gradient-to-r from-brand-blue via-sky-500 to-blue-600 text-white relative overflow-hidden opacity-0",
+        "bg-gradient-to-r from-amber via-amber-light to-indigo text-white relative overflow-hidden opacity-0",
         sectionAnim.animationClassName,
       )}
       style={sectionAnim.style}

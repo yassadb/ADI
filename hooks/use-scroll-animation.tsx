@@ -12,16 +12,17 @@ interface ScrollAnimationOptions {
   duration?: number // in ms
 }
 
-export interface ScrollAnimationResult<T extends HTMLElement> {
-  ref: React.RefObject<T>
+export interface ScrollAnimationResult {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: React.RefObject<any>
   style: CSSProperties
   animationClassName: string
   isVisible: boolean
 }
 
-export function useScrollAnimation<T extends HTMLElement>(
+export function useScrollAnimation(
   options: ScrollAnimationOptions = {},
-): ScrollAnimationResult<T> {
+): ScrollAnimationResult {
   const {
     threshold = 0.1,
     delay = 0,
@@ -31,7 +32,7 @@ export function useScrollAnimation<T extends HTMLElement>(
   } = options
 
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<T>(null)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const currentRef = ref.current

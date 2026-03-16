@@ -24,5 +24,5 @@ Ton : ${tone}
 Sujet/Brief : ${prompt}`,
   })
 
-  return result.toDataStream()
+  return result.toTextStreamResponse()
 }

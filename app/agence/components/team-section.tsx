@@ -31,7 +31,7 @@ export default function TeamSection() {
             )}
             style={titleAnim.style}
           >
-            Une Équipe d'Experts <span className="text-brand-blue">Passionnés</span> à Votre Service.
+            Une Équipe d'Experts <span className="text-amber">Passionnés</span> à Votre Service.
           </h2>
           <p
             ref={paragraphAnim.ref}
