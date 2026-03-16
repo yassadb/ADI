@@ -1,17 +1,47 @@
-"use client"
-
 import { CraftCard } from "@/components/ui/craft-card"
 import { BarChart3, Users, MessageCircle, MousePointerClick, Clock } from "lucide-react"
+import { createSupabaseAdmin } from "@/lib/db/server"
 
-const metrics = [
-  { label: "Pages vues", value: "—", icon: BarChart3, change: "" },
-  { label: "Visiteurs uniques", value: "—", icon: Users, change: "" },
-  { label: "Conversations chat", value: "—", icon: MessageCircle, change: "" },
-  { label: "Clics CTA", value: "—", icon: MousePointerClick, change: "" },
-  { label: "Temps moyen", value: "—", icon: Clock, change: "" },
-]
+async function getAnalyticsData() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return null
+  }
 
-export default function AnalyticsPage() {
+  try {
+    const supabase = await createSupabaseAdmin()
+
+    const [pageViewsRes, sessionsRes, chatRes, ctaRes] = await Promise.all([
+      supabase.from("analytics_events").select("*", { count: "exact", head: true }).eq("event_type", "page_view"),
+      supabase.from("analytics_events").select("session_id").eq("event_type", "page_view"),
+      supabase.from("conversations").select("*", { count: "exact", head: true }),
+      supabase.from("analytics_events").select("*", { count: "exact", head: true }).eq("event_type", "cta_click"),
+    ])
+
+    const uniqueSessions = new Set((sessionsRes.data ?? []).map((e) => e.session_id)).size
+
+    return {
+      pageViews: pageViewsRes.count ?? 0,
+      uniqueVisitors: uniqueSessions,
+      chatConversations: chatRes.count ?? 0,
+      ctaClicks: ctaRes.count ?? 0,
+    }
+  } catch (error) {
+    console.error("Failed to fetch analytics:", error)
+    return null
+  }
+}
+
+export default async function AnalyticsPage() {
+  const data = await getAnalyticsData()
+
+  const metrics = [
+    { label: "Pages vues", value: data ? String(data.pageViews) : "—", icon: BarChart3 },
+    { label: "Visiteurs uniques", value: data ? String(data.uniqueVisitors) : "—", icon: Users },
+    { label: "Conversations chat", value: data ? String(data.chatConversations) : "—", icon: MessageCircle },
+    { label: "Clics CTA", value: data ? String(data.ctaClicks) : "—", icon: MousePointerClick },
+    { label: "Temps moyen", value: "—", icon: Clock },
+  ]
+
   return (
     <div>
       <div className="mb-8">
@@ -39,7 +69,7 @@ export default function AnalyticsPage() {
         <CraftCard>
           <h3 className="text-lg font-semibold text-foreground mb-4">Trafic</h3>
           <div className="h-64 border border-dashed border-border/50 rounded-lg flex items-center justify-center text-muted-foreground text-sm">
-            Graphique de trafic (recharts) — En attente de données
+            {data ? "Graphique de trafic (recharts) — Disponible prochainement" : "Graphique de trafic (recharts) — En attente de données"}
           </div>
         </CraftCard>
 
@@ -47,8 +77,8 @@ export default function AnalyticsPage() {
           <h3 className="text-lg font-semibold text-foreground mb-4">Funnel de Conversion</h3>
           <div className="space-y-3">
             {[
-              { label: "Visiteurs", width: "100%", count: "—" },
-              { label: "Conversations chat", width: "60%", count: "—" },
+              { label: "Visiteurs", width: data ? "100%" : "100%", count: data ? String(data.uniqueVisitors) : "—" },
+              { label: "Conversations chat", width: data && data.uniqueVisitors > 0 ? `${Math.round((data.chatConversations / data.uniqueVisitors) * 100)}%` : "60%", count: data ? String(data.chatConversations) : "—" },
               { label: "Leads qualifiés", width: "35%", count: "—" },
               { label: "Devis générés", width: "20%", count: "—" },
               { label: "Clients convertis", width: "10%", count: "—" },

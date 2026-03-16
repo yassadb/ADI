@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { createSupabaseAdmin } from "@/lib/db/server"
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,9 +10,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid events format" }, { status: 400 })
     }
 
-    // TODO: Save to Supabase when connected
-    // const supabase = createSupabaseAdmin()
-    // await supabase.from("analytics_events").insert(events)
+    // Persist to Supabase if configured
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY) {
+      try {
+        const supabase = await createSupabaseAdmin()
+        await supabase.from("analytics_events").insert(events)
+      } catch (dbError) {
+        console.error("Failed to persist analytics to Supabase:", dbError)
+      }
+    }
 
     return NextResponse.json({ success: true, count: events.length })
   } catch (error) {
