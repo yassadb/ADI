@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export default function ApproachHeroSection() {
-  const badgeAnim = useScrollAnimation<HTMLDivElement>({ delay: 100 })
-  const titleAnim = useScrollAnimation<HTMLHeadingElement>({ delay: 200 })
-  const paragraphAnim = useScrollAnimation<HTMLParagraphElement>({ delay: 300 })
+  const badgeAnim = useScrollAnimation({ delay: 100 })
+  const titleAnim = useScrollAnimation({ delay: 200 })
+  const paragraphAnim = useScrollAnimation({ delay: 300 })
 
   return (
     <section className="relative bg-background text-foreground py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -41,7 +41,7 @@ export default function ApproachHeroSection() {
             )}
             style={titleAnim.style}
           >
-            Une Approche Structurée pour des <span className="text-brand-blue">Résultats Optimaux</span>.
+            Une Approche Structurée pour des <span className="text-amber">Résultats Optimaux</span>.
           </h1>
           <p
             ref={paragraphAnim.ref}

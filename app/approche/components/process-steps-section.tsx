@@ -44,8 +44,8 @@ const processSteps = [
 ]
 
 export default function ProcessStepsSection() {
-  const sectionTitleAnim = useScrollAnimation<HTMLHeadingElement>()
-  const sectionSubtitleAnim = useScrollAnimation<HTMLParagraphElement>({ delay: 100 })
+  const sectionTitleAnim = useScrollAnimation()
+  const sectionSubtitleAnim = useScrollAnimation({ delay: 100 })
 
   return (
     <section className="bg-secondary/30 py-20 sm:py-28">
@@ -87,7 +87,7 @@ interface ProcessStepCardProps {
 }
 
 function ProcessStepCard({ step, index }: ProcessStepCardProps) {
-  const cardAnim = useScrollAnimation<HTMLDivElement>({ delay: (index + 1) * 150 }) // Default animationName is fade-in-up
+  const cardAnim = useScrollAnimation({ delay: (index + 1) * 150 }) // Default animationName is fade-in-up
   return (
     <Card
       ref={cardAnim.ref}
@@ -98,11 +98,11 @@ function ProcessStepCard({ step, index }: ProcessStepCardProps) {
       style={cardAnim.style}
     >
       <div className="md:flex items-center">
-        <div className="md:w-1/3 p-6 md:p-8 bg-brand-blue/5 flex flex-col items-center justify-center text-center md:border-r border-border/50">
-          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-brand-blue text-brand-blue-foreground text-3xl font-bold mb-4 shadow-md">
+        <div className="md:w-1/3 p-6 md:p-8 bg-amber/5 flex flex-col items-center justify-center text-center md:border-r border-border/50">
+          <div className="flex items-center justify-center h-16 w-16 rounded-full bg-amber text-amber-foreground text-3xl font-bold mb-4 shadow-md">
             {step.stepNumber}
           </div>
-          <step.icon className="h-10 w-10 text-brand-blue mb-2" />
+          <step.icon className="h-10 w-10 text-amber mb-2" />
         </div>
         <div className="md:w-2/3 p-6 md:p-8">
           <CardTitle className="text-xl font-semibold text-foreground mb-3">{step.title}</CardTitle>

@@ -16,12 +16,12 @@ export default function MissionSection() {
           <div
             ref={iconAnim.ref}
             className={cn(
-              "mb-6 inline-flex items-center justify-center p-3 bg-brand-blue/10 rounded-full opacity-0",
+              "mb-6 inline-flex items-center justify-center p-3 bg-amber/10 rounded-full opacity-0",
               iconAnim.animationClassName,
             )}
             style={iconAnim.style}
           >
-            <Target className="h-10 w-10 text-brand-blue" />
+            <Target className="h-10 w-10 text-amber" />
           </div>
           <h2
             ref={titleAnim.ref}
@@ -31,7 +31,7 @@ export default function MissionSection() {
             )}
             style={titleAnim.style}
           >
-            Notre Mission : Catalyser Votre <span className="text-brand-blue">Transformation Digitale</span>.
+            Notre Mission : Catalyser Votre <span className="text-amber">Transformation Digitale</span>.
           </h2>
           <p
             ref={paragraphAnim.ref}

@@ -36,7 +36,7 @@ export default function ContentPage() {
       const { generateContent } = await import("@/app/actions/generate-content")
       const stream = await generateContent(type, prompt, tone)
 
-      const reader = stream.getReader()
+      const reader = stream.body!.getReader()
       const decoder = new TextDecoder()
       let text = ""
 

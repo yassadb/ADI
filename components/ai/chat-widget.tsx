@@ -6,7 +6,6 @@ import { X, Send, MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { GeoPattern } from "@/components/ui/geo-pattern"
 import { ChatMessage } from "./chat-message"
-import { chat } from "@/app/actions/chat"
 import { motion, AnimatePresence } from "framer-motion"
 
 const suggestions = [
@@ -18,11 +17,25 @@ const suggestions = [
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
+  const [inputValue, setInputValue] = useState("")
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, setInput } = useChat({
-    api: chat,
+  const { messages, status, sendMessage } = useChat({
+    id: "atlas-consultation",
+    transport: {
+      sendMessages: async ({ messages }) => {
+        const { chat } = await import("@/app/actions/chat")
+        const response = await chat(messages)
+        return response.body as ReadableStream
+      },
+      reconnectToStream: async () => {
+        // No reconnect support for now
+        return undefined as unknown as ReadableStream
+      },
+    },
   })
+
+  const isLoading = status === "streaming" || status === "submitted"
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -31,13 +44,15 @@ export function ChatWidget() {
     }
   }, [messages])
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!inputValue.trim() || isLoading) return
+    sendMessage({ text: inputValue })
+    setInputValue("")
+  }
+
   const handleSuggestion = (text: string) => {
-    setInput(text)
-    // Submit after setting input
-    const form = document.getElementById("chat-form") as HTMLFormElement
-    if (form) {
-      setTimeout(() => form.requestSubmit(), 50)
-    }
+    sendMessage({ text })
   }
 
   return (
@@ -114,12 +129,12 @@ export function ChatWidget() {
                 </div>
               ) : (
                 messages.map((msg) => {
-                  // Extract text content from parts or fallback to content
+                  // Extract text content from parts
                   const textContent =
                     msg.parts
                       ?.filter((p): p is { type: "text"; text: string } => p.type === "text")
                       .map((p) => p.text)
-                      .join("") || (msg.content as string) || ""
+                      .join("") || ""
 
                   if (!textContent) return null
 
@@ -157,17 +172,17 @@ export function ChatWidget() {
               <form id="chat-form" onSubmit={handleSubmit} className="flex gap-2">
                 <input
                   type="text"
-                  value={input}
-                  onChange={handleInputChange}
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Écrivez votre message..."
                   className="flex-1 bg-background border border-border/50 rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-amber/30 focus:border-amber/40 transition-all"
                 />
                 <button
                   type="submit"
-                  disabled={!input.trim() || isLoading}
+                  disabled={!inputValue.trim() || isLoading}
                   className={cn(
                     "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200",
-                    input.trim() && !isLoading
+                    inputValue.trim() && !isLoading
                       ? "bg-amber hover:bg-amber-deep text-white shadow-sm"
                       : "bg-muted text-muted-foreground cursor-not-allowed"
                   )}

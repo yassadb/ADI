@@ -6,11 +6,12 @@ import { CHAT_SYSTEM_PROMPT } from "@/lib/ai/prompts"
 import { getKnowledgeBase } from "@/lib/ai/knowledge-base"
 
 export async function chat(messages: UIMessage[]) {
+  const modelMessages = await convertToModelMessages(messages)
+
   const result = streamText({
     model: models.chat,
     system: `${CHAT_SYSTEM_PROMPT}\n\n${getKnowledgeBase()}`,
-    messages: convertToModelMessages(messages),
-    maxSteps: 3,
+    messages: modelMessages,
     onError: (error) => {
       console.error("Chat error:", error)
     },

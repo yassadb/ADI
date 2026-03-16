@@ -8,9 +8,9 @@ interface ShowcaseSectionProps {
 }
 
 const ShowcaseSection: React.FC<ShowcaseSectionProps> = ({ title, description, images }) => {
-  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation<HTMLHeadingElement>()
-  const { ref: descriptionRef, animationClassName: descriptionAnimation } = useScrollAnimation<HTMLParagraphElement>({ delay: 150 })
-  const { ref: imagesRef, animationClassName: imagesAnimation } = useScrollAnimation<HTMLDivElement>({ delay: 300 })
+  const { ref: titleRef, animationClassName: titleAnimation } = useScrollAnimation()
+  const { ref: descriptionRef, animationClassName: descriptionAnimation } = useScrollAnimation({ delay: 150 })
+  const { ref: imagesRef, animationClassName: imagesAnimation } = useScrollAnimation({ delay: 300 })
 
   return (
     <section className="py-16">

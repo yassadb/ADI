@@ -43,7 +43,7 @@ export default function ServicesHeroSection() {
             )}
             style={animTitle.style}
           >
-            Des Services Digitaux <span className="text-brand-blue">Conçus pour le Maroc</span>.
+            Des Services Digitaux <span className="text-amber">Conçus pour le Maroc</span>.
           </h1>
           <p
             ref={animText.ref}

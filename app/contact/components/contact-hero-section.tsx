@@ -26,7 +26,7 @@ export default function ContactHeroSection() {
             Parlons de Vous
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl mb-6 animate-fade-in-up">
-            Contactez <span className="text-brand-blue">Atlas Digital Impact</span>.
+            Contactez <span className="text-amber">Atlas Digital Impact</span>.
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-in-up animate-delay-200">
             Que vous ayez un projet précis, une question, ou que vous souhaitiez simplement explorer comment nous
